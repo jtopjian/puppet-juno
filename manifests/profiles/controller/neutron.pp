@@ -36,6 +36,11 @@ class juno::profiles::controller::neutron {
     'cubbystack::neutron::server':;
   }
 
+  file { '/etc/neutron/dnsmasq-neutron.conf':
+    ensure  => present,
+    content => "dhcp-option-force=26,1450\n",
+  }
+
   case $::lsbdistid {
     'Ubuntu': {
       file_line { '/etc/default/neutron-server NEUTRON_PLUGIN_CONFIG':

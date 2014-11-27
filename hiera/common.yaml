@@ -254,6 +254,8 @@ openstack::neutron::dhcp::settings:
   'DEFAULT/dhcp_driver': 'neutron.agent.linux.dhcp.Dnsmasq'
   'DEFAULT/use_namespaces': 'true'
   'DEFAULT/dhcp_delete_namespaces': true
+  'DEFAULT/dnsmasq_dns_servers': '8.8.8.8'
+  'DEFAULT/dnsmasq_config_file': '/etc/neutron/dnsmasq-neutron.conf'
 openstack::neutron::l3::settings:
   'DEFAULT/interface_driver': 'neutron.agent.linux.interface.BridgeInterfaceDriver'
   'DEFAULT/use_namespaces': 'true'
