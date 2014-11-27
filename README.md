@@ -1,5 +1,5 @@
-Juno Reference Module
-=======================
+OpenStack Juno Reference Module
+===============================
 
 This module is a reference implementation for the [cubbystack](https://github.com/jtopjian/puppet-cubbystack) OpenStack Module.
 
