@@ -30,6 +30,8 @@ class juno::profiles::controller::neutron {
       settings => hiera('openstack::neutron::metadata::settings');
     'cubbystack::neutron::plugins::ml2':
       settings => $ml2_merged;
+    'cubbystack::neutron::fwaas':
+      settings => hiera('openstack::neutron::fwaas::settings');
     'cubbystack::neutron::plugins::linuxbridge':;
     'cubbystack::neutron::server':;
   }

@@ -185,8 +185,11 @@ openstack::nova::settings:
   'DEFAULT/rabbit_host': "%{hiera('openstack::cloud_controller')}"
   'DEFAULT/rabbit_userid': "%{hiera('openstack::rabbitmq::userid')}"
   'DEFAULT/rabbit_password': "%{hiera('openstack::rabbitmq::password')}"
+  'DEFAULT/vnc_eanbled': true
   'DEFAULT/novncproxy_base_url': "http://%{hiera('openstack::cloud_controller')}:6080/vnc_auto.html"
   'DEFAULT/novncproxy_host': '::'
+  'DEFAULT/vncserver_proxyclient_address': "%{hiera('network::internal::ip')}"
+  'DEFAULT/vncserver_listen': '0.0.0.0'
   'DEFAULT/instance_usage_audit_period': 'hour'
   'DEFAULT/instance_usage_audit': true
   'DEFAULT/service_neutron_metadata_proxy': true
@@ -254,6 +257,7 @@ openstack::neutron::dhcp::settings:
 openstack::neutron::l3::settings:
   'DEFAULT/interface_driver': 'neutron.agent.linux.interface.BridgeInterfaceDriver'
   'DEFAULT/use_namespaces': 'true'
+  'DEFAULT/external_network_bridge': ' '
 openstack::neutron::metadata::settings:
   'DEFAULT/auth_url': "http://%{hiera('openstack::cloud_controller')}:5000/v2.0"
   'DEFAULT/auth_region': 'RegionOne'
@@ -265,20 +269,14 @@ openstack::neutron::metadata::settings:
 openstack::neutron::plugins::ml2::settings:
   'ml2/type_drivers': 'vxlan'
   'ml2/mechanism_drivers': 'linuxbridge'
-  #'ml2/mechanism_drivers': 'openvswitch'
   'ml2/tenant_network_types': 'vxlan'
   'ml2_type_vxlan/vni_ranges': '1000:1050'
   'securitygroup/firewall_driver': 'neutron.agent.linux.iptables_firewall.IptablesFirewallDriver'
-  #'securitygroup/firewall_driver': 'neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver'
   'vxlan/enable_vxlan': True
   'vxlan/l2_population': False
-  #'ovs/tunnel_type': 'vxlan'
-  #'ovs/tenant_network_type': 'vxlan'
-  #'ovs/tunnel_id_ranges': '1000:1050'
-  #'ovs/enable_tunneling': True
   'agent/veth_mtu': 1490
-  #'agent/tunnel_types': 'vxlan'
-  #'agent/l2_population': False
+openstack::neutron::fwaas::settings:
+  'fwaas/enabled': False
 
 ######## Swift
 

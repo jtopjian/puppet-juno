@@ -12,6 +12,7 @@ class juno::profiles::controller::nova {
   }
   class { 'cubbystack::nova::api': }
   class { 'cubbystack::nova::cert': }
+  class { 'cubbystack::nova::consoleauth': }
   class { 'cubbystack::nova::conductor': }
   class { 'cubbystack::nova::objectstore': }
   class { 'cubbystack::nova::scheduler': }
